@@ -1,4 +1,4 @@
-# CPE Encoder/Decoder
+# CLI CPE Encoder/Decoder tools v1.0
 
 ## What ?
 `CPE` for **C**olor **P**ixel **E**ncoding
@@ -10,7 +10,7 @@
 # compile code from GitHub
 git clone https://github.com/Perrtatter/CPE-Encoder.git cpe_src
 cd  cpe_src
-cargo run 
+cargo build 
 
 ## encode
 ./main --encode data.txt --ouput encode.png
