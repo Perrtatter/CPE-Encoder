@@ -44,8 +44,15 @@ fn main() {
             println!("{} Fatal: please use the output flag (--help for help) !", cli_utils::FATAL)
         }
 
-        // get input file
         else{
+            // get input file
+            let input_file: &str = &args[2];
+            let input_file: String = String::from(input_file);
+
+            // get file input
+            let output_file: &str = &args[4];
+            let output_file: String = String::from(output_file);
+
             // choose mod 
             if args.contains(&encode_tag){
                 mode = String::from("encoding");
@@ -57,14 +64,10 @@ fn main() {
 
             // encode
             if mode == "encoding"{
-                // get file input
-                let input_file: &str = &args[2];
-                let input_file: String = String::from(input_file);
-
                 println!("{} File specified: {}{}{}",cli_utils::SUCCESS, cli_utils::GREEN, input_file, cli_utils::RESET);
 
                 // read file 
-                let content: String = file::read_file(input_file).expect("Error");
+                let content: String = file::read_file(input_file.clone()).expect("Error");
                 println!("{} File found !", cli_utils::SUCCESS);
 
                 println!();
@@ -76,17 +79,39 @@ fn main() {
                 // convert 
                 println!("{} Convert ...", cli_utils::INFO);
                 let pixel_list: Vec<[u8; 3]> = convert::encode(tokens);
- 
-                // get file input
-                let output_file: &str = &args[4];
-                let output_file: String = String::from(output_file);
 
                 // write png
                 println!("{} Write PNG ...", cli_utils::INFO);
-                png::write_png(pixel_list, output_file)
+                png::write_png(pixel_list, output_file.clone());
+
+                println!();
+                println!("{} Encode saved: {}{}{}", cli_utils::SUCCESS, cli_utils::GREEN, output_file, cli_utils::RESET);
+            }
+
+            // decode
+            if mode == "decoding"{
+                println!("{} File specified: {}{}{}",cli_utils::SUCCESS, cli_utils::GREEN, input_file, cli_utils::RESET);
+
+                // read file 
+                let pixel_list: Vec<[u8; 3]> = png::read_png(input_file.clone());
+                println!("{} File found !", cli_utils::SUCCESS);
 
                 println!();
 
+                // convert 
+                println!("{} Convert ...", cli_utils::INFO);
+                let tokens: Vec<[Option<char>; 3]> = convert::decode(pixel_list.clone());
+
+
+                // untokenize
+                println!("{} Untokenize ...", cli_utils::INFO);
+                let content: String = token::untokenize(tokens);
+
+                // write txt
+                println!("{} Write TXT ...", cli_utils::INFO);
+                file::write_file(content.clone(), output_file.clone());
+
+                println!();
                 println!("{} Encode saved: {}{}{}", cli_utils::SUCCESS, cli_utils::GREEN, output_file, cli_utils::RESET);
             }
         }

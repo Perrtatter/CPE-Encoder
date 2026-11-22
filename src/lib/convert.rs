@@ -46,7 +46,7 @@ pub fn encode(tokens: Vec<[Option<char>; 3]>) -> Vec<[u8; 3]> {
 }
 
 
-fn decode(pixel_list: Vec<[u8; 3]>) -> Vec<[Option<char>; 3]> {
+pub fn decode(pixel_list: Vec<[u8; 3]>) -> Vec<[Option<char>; 3]> {
     let mut tokens: Vec<[Option<char>; 3]> = vec![];
 
     for pixel in pixel_list {

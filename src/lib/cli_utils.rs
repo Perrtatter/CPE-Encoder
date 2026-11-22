@@ -32,7 +32,7 @@ Decode file:
 ";
 
 pub const VERSION: &str = "
-Version : 1.2
+Version : 3.3
 By Perrtatter
 ";
 

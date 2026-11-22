@@ -1,7 +1,7 @@
-# CLI CPE Encoder/Decoder tools v1.2
+# CLI CPE Encoder/Decoder tools v3.3
 
 ## What ?
-`CPE` for **C**olor **P**ixel **E**ncoding
+`CPE` for **C**olor **P**ixel **E**ncoding is a algorithm who convert ascii text to PNG Pixel fully coded in **Rust**
 
 <br>
 
@@ -12,7 +12,7 @@ git clone https://github.com/Perrtatter/CPE-Encoder.git cpe_src
 cd  cpe_src
 cargo build 
 
-## /!\ argument order is crucial !
+## /!\ argument order is crucial ! /!\
 ## encode
 ./main --encode data.txt --ouput encode.png
 [*] File found: data.txt
@@ -25,8 +25,9 @@ cargo build
 ## decode
 ./main --decode encode.png --ouput data.txt
 [*] File found: encode.png
-[*] Untokenize ...
+[*] Read pixels ...
 [*] Convert ...
+[*] Untokenize ...
 [*] Write TXT ...
 
 [*] Encode saved: data.txt
