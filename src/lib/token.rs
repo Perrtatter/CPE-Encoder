@@ -1,47 +1,26 @@
-pub fn tokenize(data: String) -> Vec<[Option<char>; 3]>{
-    // token vec structure
-    let mut tokens: Vec<[Option<char>; 3]> = vec![];
+pub fn tokenize(data: String) -> Vec<[Option<char>; 3]> {
+    let chars: Vec<char> = data.chars().collect();
+    let mut tokens: Vec<[Option<char>; 3]> = Vec::new();
 
-    let mut nbr_tokens:f32;
-    nbr_tokens = data.len() as f32 / 3.0;
-    nbr_tokens = nbr_tokens.ceil();
-
-    // add empty tokens structure
-    for _ in 0..nbr_tokens as i8{
-        tokens.push([None, None, None]);
-    }
-
-    // put char in tokens
-    let mut i: usize = 0;
-    let mut j: usize = 0;
-
-    for char in data.chars(){
-        tokens[j][i] = Some(char);
-        i +=1; 
-
-        if i > 2{
-            i = 0;
-            j += 1;
+    for chunk in chars.chunks(3) {
+        let mut token = [None; 3];
+        for (i, &char) in chunk.iter().enumerate() {
+            token[i] = Some(char);
         }
+        tokens.push(token);
     }
 
     return tokens;
 }
 
 
-pub fn untokenize(tokens: Vec<[Option<char>; 3]>) -> String{
+pub fn untokenize(tokens: Vec<[Option<char>; 3]>) -> String {
     let mut data: String = String::new();
 
-    // travel tokens vec 
-    for token in tokens{
-        for char in token{
-            // push token char to data
-            if char == None{
-                ;
-            }
-
-            else{
-                data.push(char.unwrap());
+    for token in tokens {
+        for char in token {
+            if let Some(char) = char {
+                data.push(char);
             }
         }
     }

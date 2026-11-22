@@ -1,4 +1,4 @@
-# CLI CPE Encoder/Decoder tools v3.3
+# CLI CPE Encoder/Decoder tools v4.3
 
 ## What ?
 `CPE` for **C**olor **P**ixel **E**ncoding is a algorithm who convert ascii text to PNG Pixel fully coded in **Rust**

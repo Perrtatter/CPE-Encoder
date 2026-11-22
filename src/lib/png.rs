@@ -4,12 +4,14 @@ use image::ImageReader;
 
 
 pub fn write_png(pixel_list: Vec<[u8; 3]>, output_file: String){
-    // define png dimention
-    let width = pixel_list.len() as u32;
-    let height = 1;
+    // make dimensions square
+    let side = (pixel_list.len() as f64).sqrt().ceil().max(1.0) as u32;
+    let width = side;
+    let height = side;
 
     // convert for png
-    let raw_bytes: Vec<u8> = pixel_list.iter().flatten().copied().collect();
+    let mut raw_bytes: Vec<u8> = pixel_list.iter().flatten().copied().collect();
+    raw_bytes.resize(side as usize * side as usize * 3, 0);
 
     // create image
     let img: ImageBuffer<Rgb<u8>, Vec<u8>> =
