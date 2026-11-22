@@ -43,3 +43,16 @@ This encoding algorithm is very simple ( exemple : )
 
 ## Resume
 It encode text in RGB to write PNG
+
+<br>
+
+## Try your self
+You can try your self:
+
+```bash
+# encode
+./main --encode demo/data.txt --ouput encode.png
+
+# decode 
+./main --decode demo/encode.png --output data.txt
+```
