@@ -57,3 +57,5 @@ You can try your self:
 # decode 
 ./main --decode demo/encode.png --output data.txt
 ```
+
+(download executable file in release)
