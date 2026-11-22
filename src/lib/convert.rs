@@ -24,7 +24,7 @@ static BYTES_CHAR_MAP: LazyLock<HashMap<char, u8>> = LazyLock::new(|| {
 });
 
 
-fn encode(tokens: Vec<[Option<char>; 3]>) -> Vec<[u8; 3]> {
+pub fn encode(tokens: Vec<[Option<char>; 3]>) -> Vec<[u8; 3]> {
     let mut pixel_list: Vec<[u8; 3]> = vec![];
 
     // travel tokens

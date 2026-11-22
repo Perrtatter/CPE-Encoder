@@ -1,0 +1,3 @@
+Hello, 
+This file will be encode by CFE Algorithm
+Good bye.

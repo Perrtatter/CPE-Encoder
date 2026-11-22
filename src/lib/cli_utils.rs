@@ -32,30 +32,7 @@ Decode file:
 ";
 
 pub const VERSION: &str = "
-Version : 1.0
+Version : 1.2
 By Perrtatter
 ";
 
-
-
-/*
-mod color;
-
-fn main() {
-    println!("{}Hello", color::RED);
-    println!("{}Hello", color::BLUE);
-    println!("{}Hello", color::GREEN);
-    println!("{}Hello", color::YELLOW);
-    println!("{}Hello", color::CYAN);
-    println!("{}Hello", color::MAGENTA);
-    println!("{}Hello", color::RESET);
-
-    println!("");
-
-    println!("{} Hello", color::FATAL);
-    println!("{} Hello", color::WARNING);
-    println!("{} Hello", color::SUCCESS);
-    println!("{} Hello", color::INFO);
-
-}
-*/

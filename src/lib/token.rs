@@ -1,4 +1,4 @@
-fn tokenize(data: String) -> Vec<[Option<char>; 3]>{
+pub fn tokenize(data: String) -> Vec<[Option<char>; 3]>{
     // token vec structure
     let mut tokens: Vec<[Option<char>; 3]> = vec![];
 
@@ -29,7 +29,7 @@ fn tokenize(data: String) -> Vec<[Option<char>; 3]>{
 }
 
 
-fn untokenize(tokens: Vec<[Option<char>; 3]>) -> String{
+pub fn untokenize(tokens: Vec<[Option<char>; 3]>) -> String{
     let mut data: String = String::new();
 
     // travel tokens vec 
