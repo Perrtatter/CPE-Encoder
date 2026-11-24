@@ -14,7 +14,7 @@ cargo build
 
 ## /!\ argument order is crucial ! /!\
 ## encode
-./main --encode data.txt --ouput encode.png
+./main --encode data.txt --output encode.png
 [*] File found: data.txt
 [*] Tokenize ...
 [*] Convert ...
@@ -23,7 +23,7 @@ cargo build
 [*] Encode saved: encode.png
 
 ## decode
-./main --decode encode.png --ouput data.txt
+./main --decode encode.png --output data.txt
 [*] File found: encode.png
 [*] Read pixels ...
 [*] Convert ...
@@ -52,7 +52,7 @@ You can try your self:
 
 ```bash
 # encode
-./main --encode demo/data.txt --ouput encode.png
+./main --encode demo/data.txt --output encode.png
 
 # decode 
 ./main --decode demo/encode.png --output data.txt
