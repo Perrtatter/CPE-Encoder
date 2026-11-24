@@ -58,3 +58,79 @@ You can try your self:
 ./main --decode demo/encode.png --output data.txt
 ```
 (download executable file in release)
+
+<br>
+
+## Files
+You can encode file bytes with this algorithm, i made 2 simple script who encode in Base64 first and in CPE :
+
+### Encode : 
+```python
+# for exemple encode Word file
+# usage : python3 encode.py file.docx
+
+# imports
+import sys 
+import os 
+import base64
+
+
+# ask file 
+input_file = sys.argv[1]
+
+# read file 
+with open(input_file, "rb+") as file:
+    file_bytes = file.read()
+    
+# encode 
+b64_file_bytes = base64.b64encode(file_bytes)
+
+# write 
+with open("base64_temp.txt", "wb+") as bfile:
+    bfile.write(b64_file_bytes)
+    
+    
+# run bin 
+os.system(f".\cpe_code --encode base64_temp.txt --output {input_file}.png")
+
+# delete temp 
+os.remove("base64_temp.txt")
+```
+
+### Decode
+```python
+# for exemple decode Word file
+# usage : python3 decode.py file.png .docx
+
+# imports
+import sys 
+import os 
+import base64
+
+
+# ask file 
+input_file = sys.argv[1]
+ext = sys.argv[2]
+
+# run bin 
+os.system(f".\cpe_code --decode {input_file} --output base64_temp.txt")
+
+# read file 
+with open("base64_temp.txt", "rb+") as file:
+    file_bytes = file.read()
+    
+# encode 
+b64_file_bytes = base64.b64decode(file_bytes)
+
+# write 
+with open(f"decode.{ext}", "wb+") as bfile:
+    bfile.write(b64_file_bytes)
+    
+   
+
+# delete temp 
+os.remove("base64_temp.txt")
+```
+
+maybe nativly one day ...
+
